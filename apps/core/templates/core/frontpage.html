@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h2 class=" is-size-1 title has-text-centered has-text-info-dark">ODD JOBS PORTAL</h2>
+    <h1 class="is-size 5 subtitle has-text-centered has-text-info-dark">TO HELP YOU FIND SIDE JOBS FAST</h1>
+    
+    <hr>
+    <figure class="image is-700x700">
+        <img src =" {% static 'images/img.png' %} ">
+    </figure>
+       
+
+    <hr>
+
+    <div class="columns">
+        {% for job in jobs %}
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4">{{ job.title }}</p>
+                                <p class="subtitle is-6">{{ job.created_at }}</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            {{ job.short_description }}
+
+                            <hr>
+
+                            <a href="{% url 'job_detail' job.id %}">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
